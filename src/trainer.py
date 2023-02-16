@@ -65,7 +65,7 @@ class Trainer():
                 self.optimizer.step()
                 self.optimizer.zero_grad()
 
-                logger.log({"train_loss": loss}, step=it)
+                logger.log({"train/loss": loss}, step=it)
                 it += 1
 
             # self.lr_scheduler.step()
@@ -74,8 +74,8 @@ class Trainer():
             train_acc = accuracy(self.net, train_loader)
             test_acc = accuracy(self.net, test_loader)
 
-            logger.log({"train_acc": train_acc}, step=epoch)
-            logger.log({"test_acc": test_acc}, step=epoch)
+            logger.log({"train/acc": train_acc}, step=it)
+            logger.log({"test/acc": test_acc}, step=it)
 
 
         
