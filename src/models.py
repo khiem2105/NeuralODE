@@ -72,7 +72,7 @@ class ConcatT(nn.Module):
         super(ConcatT, self).__init__()
 
         self.model = nn.Conv2d(
-            in_channels=in_channels,
+            in_channels=in_channels+1,
             out_channels=out_channels,
             kernel_size=kernel_size,
             stride=stride,

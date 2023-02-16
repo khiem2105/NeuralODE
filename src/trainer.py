@@ -8,6 +8,8 @@ from torch.utils.data import DataLoader
 from torch.optim import SGD
 from torch.optim.lr_scheduler import MultiStepLR
 
+from tqdm import tqdm
+
 
 class Trainer():
     def __init__(
@@ -53,7 +55,7 @@ class Trainer():
         logger
     ):
         it = 0
-        for epoch in range(self.config.max_epochs):
+        for epoch in tqdm(range(self.config.max_epochs)):
             for x, y in train_loader:
                 x, y = x.to(self.device), y.to(self.device)
 
