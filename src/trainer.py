@@ -22,7 +22,8 @@ class Trainer():
         self.config = config
         
         self.downsampling = DownSampling(in_channels=1, out_channels=64)
-        self.feature_extractor = [ODEBlock(ODEFunc(n_channels=64), tol=self.config.tol)]\
+        self.feature_extractor = [ODEBlock(ODEFunc(n_channels=64), tol=self.config.tol, 
+                                           use_adjoint=self.config.use_adjoint)]\
                                  if self.config.network == "odenet"\
                                  else [ResBlock(in_channels=64, out_channels=64) for _ in range(6)]
         self.fc = [

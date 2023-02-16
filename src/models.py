@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from torchdiffeq import odeint_adjoint
+from torchdiffeq import odeint_adjoint, odeint
 
 class DownSampling(nn.Module):
     def __init__(
@@ -114,7 +114,8 @@ class ODEBlock(nn.Module):
     def __init__(
         self,
         odefunc: ODEFunc,
-        tol: float
+        tol: float,
+        use_adjoint: bool
     ):
         super(ODEBlock, self).__init__()
 
@@ -122,10 +123,11 @@ class ODEBlock(nn.Module):
 
         self.t = torch.tensor([0., 1.])
         self.tol = tol
+        self.solver = odeint_adjoint if use_adjoint else odeint
 
     def forward(self, x):
         self.t = self.t.type_as(x)
-        out = odeint_adjoint(
+        out = self.solver(
             func=self.odefunc,
             y0=x,
             t=self.t,
