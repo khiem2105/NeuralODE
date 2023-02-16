@@ -24,7 +24,7 @@ class Trainer():
                                  if self.config.network == "odenet"\
                                  else [ResBlock(in_channels=64, out_channels=64) for _ in range(6)]
         self.fc = [
-            nn.GroupNorm(num_groups=64),
+            nn.GroupNorm(num_groups=32, num_channels=64),
             nn.ReLU(inplace=True),
             nn.AdaptiveAvgPool2d((1, 1)),
             nn.Flatten(),
