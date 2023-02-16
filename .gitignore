@@ -134,3 +134,6 @@ wandb/
 
 # dataset
 dataset/
+
+# test
+test.ipynb

@@ -16,7 +16,7 @@ def accuracy(
 
         yhat = model(x)
         pred = torch.max(torch.softmax(yhat, dim=-1), dim=-1)[1]
-        acc_ = torch.mean((pred == yhat).float()).item()
+        acc_ = torch.mean((pred == y).float()).item()
         
         acc += acc_
 
