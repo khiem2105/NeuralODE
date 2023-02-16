@@ -42,11 +42,11 @@ class Trainer():
         self.loss = nn.CrossEntropyLoss()
 
         self.optimizer = SGD(self.net.parameters(), lr=self.config.lr)
-        self.lr_scheduler = MultiStepLR(
-            self.optimizer,
-            milestones=[50, 100, 150],
-            gamma=0.1
-        )
+        # self.lr_scheduler = MultiStepLR(
+        #     self.optimizer,
+        #     milestones=[50, 100, 150],
+        #     gamma=0.1
+        # )
 
     def train(
         self,
@@ -68,15 +68,14 @@ class Trainer():
                 logger.log({"train_loss": loss}, step=it)
                 it += 1
 
-            self.lr_scheduler.step()
+            # self.lr_scheduler.step()
 
-        # Eval
-        if epoch % 20 == 0 or epoch == self.config.max_epochs - 1:
+            # Eval
             train_acc = accuracy(self.net, train_loader)
             test_acc = accuracy(self.net, test_loader)
 
-            logger.log({"train acc": train_acc}, step=it)
-            logger.log({"test acc": test_acc}, step=it)
+            logger.log({"train acc": train_acc}, step=epoch)
+            logger.log({"test acc": test_acc}, step=epoch)
 
 
         

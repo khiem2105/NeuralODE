@@ -9,7 +9,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("--network", type=str, choices=["resnet", "odenet"], default="odenet")
 parser.add_argument("--tol", type=float, default=1e-3)
-parser.add_argument("--max_epochs", type=int, default=200)
+parser.add_argument("--max_epochs", type=int, default=10)
 parser.add_argument("--data_aug", type=eval, choices=[True, False], default=True)
 parser.add_argument("--lr", type=float, default=0.1)
 parser.add_argument("--batch_size", type=int, default=128)
