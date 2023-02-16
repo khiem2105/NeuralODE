@@ -12,10 +12,10 @@ class DownSampling(nn.Module):
 
         self.model = nn.Sequential(
             nn.Conv2d(in_channels=in_channels, out_channels=out_channels, kernel_size=3, stride=1),
-            nn.GroupNorm(num_groups=64),
+            nn.GroupNorm(num_groups=32, num_channels=64),
             nn.ReLU(inplace=True),
             nn.Conv2d(in_channels=out_channels, out_channels=out_channels, kernel_size=4, stride=2, padding=1),
-            nn.GroupNorm(num_groups=64),
+            nn.GroupNorm(num_groups=32, num_channels=64),
             nn.ReLU(inplace=True),
             nn.Conv2d(in_channels=out_channels, out_channels=out_channels, kernel_size=4, stride=2, padding=1)
         )
@@ -31,7 +31,7 @@ class ResBlock(nn.Module):
     ):
         super(ResBlock, self).__init__()
 
-        self.norm1 = nn.GroupNorm(num_groups=in_channels)
+        self.norm1 = nn.GroupNorm(num_groups=32, num_channels=in_channels)
         self.relu = nn.ReLU(inplace=True)
         self.conv1 = nn.Conv2d(
             in_channels=in_channels,
@@ -40,7 +40,7 @@ class ResBlock(nn.Module):
             stride=1,
             padding=1
         )
-        self.norm2 = nn.GroupNorm(num_groups=out_channels)
+        self.norm2 = nn.GroupNorm(num_groups=32, num_channels=out_channels)
         self.conv2 = nn.Conv2d(
             in_channels=out_channels,
             out_channels=out_channels,
@@ -92,12 +92,12 @@ class ODEFunc(nn.Module):
     ):
         super(ODEFunc, self).__init__()
 
-        self.norm1 = nn.GroupNorm(num_groups=n_channels)
+        self.norm1 = nn.GroupNorm(num_groups=32, num_channels=n_channels)
         self.relu = nn.ReLU(inplace=True)
         self.conv1 = ConcatT(n_channels, n_channels, kernel_size=3, stride=1, padding=1)
-        self.norm2 = nn.GroupNorm(num_groups=n_channels)
+        self.norm2 = nn.GroupNorm(num_groups=32, num_channels=n_channels)
         self.conv2 = ConcatT(n_channels, n_channels, kernel_size=3, stride=1, padding=1)
-        self.norm3 = nn.GroupNorm(num_groups=n_channels)
+        self.norm3 = nn.GroupNorm(num_groups=32, num_channels=n_channels)
 
     def forward(self, t, x):
         out = self.norm1(x)
