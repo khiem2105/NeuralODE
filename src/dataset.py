@@ -21,12 +21,14 @@ def load_MNIST(
     train_dataset = MNIST(
         root="../dataset",
         train=True,
-        transform=transform_train
+        transform=transform_train,
+        download=True
     )
     test_dataset = MNIST(
         root="../dataset",
         train=False,
-        transform=transform_test
+        transform=transform_test,
+        download=True
     )
 
     train_loader = DataLoader(
