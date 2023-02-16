@@ -74,8 +74,8 @@ class Trainer():
             train_acc = accuracy(self.net, train_loader)
             test_acc = accuracy(self.net, test_loader)
 
-            logger.log({"train acc": train_acc}, step=epoch)
-            logger.log({"test acc": test_acc}, step=epoch)
+            logger.log({"train_acc": train_acc}, step=epoch)
+            logger.log({"test_acc": test_acc}, step=epoch)
 
 
         
