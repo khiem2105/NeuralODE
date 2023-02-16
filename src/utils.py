@@ -9,6 +9,7 @@ def accuracy(
     loader: DataLoader
 ):
     acc = 0
+    it = 0
     
     for x, y in loader:
         x = x.to(DEVICE)
@@ -19,6 +20,7 @@ def accuracy(
         acc_ = torch.mean((pred == y).float()).item()
         
         acc += acc_
+        it += 1
 
-    return acc
+    return acc / it
 
