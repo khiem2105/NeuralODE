@@ -11,3 +11,7 @@
 ```--data_aug``: whether to use data augmentation or not
 ```--lr```: learning rate
 ```--batch_size```: batch size
+
+**Links**
+- [Github](https://github.com/khiem2105/NeuralODE)
+- [Wandb logs](https://wandb.ai/amal-project/NeuralODE)
