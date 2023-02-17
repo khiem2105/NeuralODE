@@ -43,11 +43,6 @@ class Trainer():
         self.loss = nn.CrossEntropyLoss()
 
         self.optimizer = SGD(self.net.parameters(), lr=self.config.lr)
-        # self.lr_scheduler = MultiStepLR(
-        #     self.optimizer,
-        #     milestones=[50, 100, 150],
-        #     gamma=0.1
-        # )
 
     def train(
         self,
@@ -68,8 +63,6 @@ class Trainer():
 
                 logger.log({"train/loss": loss}, step=it)
                 it += 1
-
-            # self.lr_scheduler.step()
 
             # Eval
             train_acc = accuracy(self.net, train_loader)

@@ -44,7 +44,7 @@ if __name__ == "__main__":
         name=run_name,
         config=config.__dict__
     )
-    
+
     trainer.train(
         train_loader,
         test_loader,
