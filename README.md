@@ -3,7 +3,7 @@
 **Repository structure**
 
 - [Notebook for the Damped Pendulum problem](/src/Damped%20Pendulum/)
-- [Classification problem on MNIST dataset](/src/main.py):
+- [Classification problem on MNIST dataset](/src/run.py):
 ```--network```: "resnet" or "odenet"
 ```--use_adjoint```: whether to use adjoint method or not for NeuralODE
 ```--tol```: error tolerance for the ODE solver
