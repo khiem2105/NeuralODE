@@ -3,18 +3,18 @@
 **Repository structure**
 
 - [Notebook for the Damped Pendulum problem](/src/Damped%20Pendulum/)
-- [Classification problem on MNIST dataset](/src/main.py):
+- [Classification problem on MNIST dataset](/src/main.py) with flags:
 
-```--network```: "resnet" or "odenet"
+  ```--network```: "resnet" or "odenet"
 
-```--use_adjoint```: whether to use adjoint method or not for NeuralODE
+  ```--use_adjoint```: whether to use adjoint method or not for NeuralODE
 
-```--tol```: error tolerance for the ODE solver
+  ```--tol```: error tolerance for the ODE solver
 
-```--max_epochs```: max epochs for training
+  ```--max_epochs```: max epochs for training
 
-```--data_aug```: whether to use data augmentation or not
+  ```--data_aug```: whether to use data augmentation or not
 
-```--lr```: learning rate
+  ```--lr```: learning rate
 
-```--batch_size```: batch size
+  ```--batch_size```: batch size
